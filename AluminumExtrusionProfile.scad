@@ -12,7 +12,7 @@
 //4080_extrusion_profile(slot = "v");
 //4040_extrusion_profile(slot = "v");
 //3030_extrusion_profile(slot = "t");
-
+//3060_extrusion_profile(slot = "t");
 
 /* 
 
@@ -99,9 +99,16 @@ module 2020_between_cut() {
    }  
 }
 
-module 2020_rectangle_cut() { 
+module 2020_rectangle_cut() {
    width = 5;
    height = 16.4;
+
+   translate([-width/2, -height/2 , 0]) square([width, height]);
+}
+
+module 3030_rectangle_cut() {
+   width = 6;
+   height = 20;
 
    translate([-width/2, -height/2 , 0]) square([width, height]);
 }
@@ -164,7 +171,7 @@ module 4040_extrusion_profile_square(slot, outer_square_base) {
 }
 
 // Creates a 2D 3030 Extrusion Profile
-module 3030_extrusion_profile(slot = "t", left_open = false, right_open = false, upper_open = false, lower_open = false) {
+module 3030_extrusion_profile(slot = "t", left_open = false, right_open = false, upper_open = false, lower_open = false, outer_square_base = true) {
         
         fillet=.8;
         square_size=30;
@@ -174,7 +181,23 @@ module 3030_extrusion_profile(slot = "t", left_open = false, right_open = false,
         channel_depth=9.2;
         lip_depth = 2.2;
         
-        extrusion_profile(slot, fillet, square_size, inner_circle_radius, inner_circle_opening, outer_circle_opening, channel_depth, lip_depth, left_open, right_open, upper_open, lower_open);   
+        extrusion_profile(slot, fillet, square_size, inner_circle_radius, inner_circle_opening, outer_circle_opening, channel_depth, lip_depth, left_open, right_open, upper_open, lower_open, outer_square_base = outer_square_base);
+}
+
+// Creates a 2D 3060 Extrusion Profile
+module 3060_extrusion_profile(slot = "t") {
+   difference() {
+       outer_rectangle_with_fillet(0.5, 60, 30);
+
+       // Cut between the two 3030 extrusions
+       translate([0, 0 , 0]) 3030_rectangle_cut();
+
+        // Left
+       translate([-15,0,0]) 3030_extrusion_profile(slot, outer_square_base = false);
+
+       // right
+       translate([15,0,0]) 3030_extrusion_profile(slot, outer_square_base = false);
+   }
 }
 
 // Basic extrusion module - creates a 2d extrusion profile based on input parameters

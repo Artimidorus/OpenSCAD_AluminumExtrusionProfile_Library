@@ -25,6 +25,7 @@ linear_extrude(10) 2020_extrusion_profile(slot = "t");
 - 4080
 - 4040
 - 3030
+- 3060
 
 # License
 Copyright 2023 Jen Reed
