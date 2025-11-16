@@ -39,7 +39,7 @@ module extrusion_profile_2040(slot = "t") {
        outer_rectangle_with_fillet(0.5, 40, 20);
            
        // Cut between the two 2020 extrusions
-       translate([0, 0 , 0]) 2020_rectangle_cut();   
+       translate([0, 0 , 0]) rectangle_cut_2020();   
     
         // Left
        translate([-10,0,0]) extrusion_profile_2020(slot, outer_square_base = false);
@@ -55,8 +55,8 @@ module extrusion_profile_2060(slot = "t") {
        outer_rectangle_with_fillet(0.5, 60, 20);
            
        // Cut between the two 2020 extrusions
-       translate([-10, 0 , 0]) 2020_rectangle_cut();
-       translate([10, 0 , 0]) 2020_rectangle_cut(); 
+       translate([-10, 0 , 0]) rectangle_cut_2020();
+       translate([10, 0 , 0]) rectangle_cut_2020(); 
         // Left
        translate([-20,0,0]) extrusion_profile_2020(slot, outer_square_base = false);
        // middle
@@ -72,9 +72,9 @@ module extrusion_profile_2080(slot = "t") {
        outer_rectangle_with_fillet(0.5, 80, 20);
            
        // Cut between the two 2020 extrusions
-       translate([0, 0 , 0]) 2020_rectangle_cut();
-       translate([-20, 0 , 0]) 2020_rectangle_cut(); 
-       translate([20, 0 , 0]) 2020_rectangle_cut();
+       translate([0, 0 , 0]) rectangle_cut_2020();
+       translate([-20, 0 , 0]) rectangle_cut_2020(); 
+       translate([20, 0 , 0]) rectangle_cut_2020();
     
         // Left
        translate([-30,0,0]) extrusion_profile_2020(slot, outer_square_base = false);
@@ -86,7 +86,7 @@ module extrusion_profile_2080(slot = "t") {
 }
 
 
-module 2020_between_cut() {
+module between_cut_2020() {
   hull() {
      translate([.5, 10- 2.3, 1]) circle(0.5);
      translate([-.5, 10- 2.3, 1]) circle(0.5);
@@ -99,14 +99,14 @@ module 2020_between_cut() {
    }  
 }
 
-module 2020_rectangle_cut() {
+module rectangle_cut_2020() {
    width = 5;
    height = 16.4;
 
    translate([-width/2, -height/2 , 0]) square([width, height]);
 }
 
-module 3030_rectangle_cut() {
+module rectangle_cut_2020() {
    width = 6;
    height = 20;
 
@@ -123,11 +123,11 @@ module extrusion_profile_4080(slot = "t") {
      }
      
      // Middle cuts between 2020 extrusions
-     translate([0,0,0]) 2020_rectangle_cut();
-     translate([-20, 0, 0]) 2020_between_cut();
-     translate([20, 0, 0]) 2020_between_cut();
-     translate([30, 10, 0]) rotate([0,0,90]) 2020_between_cut();
-     translate([-30, 10, 0]) rotate([0,0,90]) 2020_between_cut();
+     translate([0,0,0]) rectangle_cut_2020();
+     translate([-20, 0, 0]) between_cut_2020();
+     translate([20, 0, 0]) between_cut_2020();
+     translate([30, 10, 0]) rotate([0,0,90]) between_cut_2020();
+     translate([-30, 10, 0]) rotate([0,0,90]) between_cut_2020();
      
      // Upper Left
      translate([-30, 20, 0]) extrusion_profile_2020(slot, outer_square_base = false);
@@ -151,10 +151,10 @@ module extrusion_profile_4040(slot = "t") {
      // Cut diamond in middle
      translate([0, 0,0]) rotate([0,0,45]) square(19, center = true);
      // Other middle cuts
-     translate([0,10,0]) 2020_rectangle_cut();
-     translate([0,-10,0]) 2020_rectangle_cut();
-     translate([10,0,0]) rotate([0,0,90]) 2020_rectangle_cut();
-     translate([-10,0,0]) rotate([0,0,90]) 2020_rectangle_cut(); 
+     translate([0,10,0]) rectangle_cut_2020();
+     translate([0,-10,0]) rectangle_cut_2020();
+     translate([10,0,0]) rotate([0,0,90]) rectangle_cut_2020();
+     translate([-10,0,0]) rotate([0,0,90]) rectangle_cut_2020(); 
    }    
 }
 
@@ -190,7 +190,7 @@ module extrusion_profile_3060(slot = "t") {
        outer_rectangle_with_fillet(0.5, 60, 30);
 
        // Cut between the two 3030 extrusions
-       translate([0, 0 , 0]) 3030_rectangle_cut();
+       translate([0, 0 , 0]) rectangle_cut_2020();
 
         // Left
        translate([-15,0,0]) extrusion_profile_3030(slot, outer_square_base = false);
