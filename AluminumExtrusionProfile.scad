@@ -5,14 +5,14 @@
 */
 
 //$fn = 100;
-//2020_extrusion_profile(slot = "t");
-//2040_extrusion_profile(slot = "t");
-//2060_extrusion_profile(slot = "t");
-//2080_extrusion_profile(slot = "t");
-//4080_extrusion_profile(slot = "v");
-//4040_extrusion_profile(slot = "v");
-//3030_extrusion_profile(slot = "t");
-//3060_extrusion_profile(slot = "t");
+//extrusion_profile_2020(slot = "t");
+//extrusion_profile_2040(slot = "t");
+//extrusion_profile_2060(slot = "t");
+//extrusion_profile_2080(slot = "t");
+//extrusion_profile_4080(slot = "v");
+//extrusion_profile_4040(slot = "v");
+//extrusion_profile_3030(slot = "t");
+//extrusion_profile_3060(slot = "t");
 
 /* 
 
@@ -20,7 +20,7 @@
 
 */
 // Creates a 2D 2020 Extrusion Profile
-module 2020_extrusion_profile(slot = "t", left_open = false, right_open = false, upper_open = false, lower_open = false, outer_square_base = true) {
+module extrusion_profile_2020(slot = "t", left_open = false, right_open = false, upper_open = false, lower_open = false, outer_square_base = true) {
         
         fillet=0.5;
         square_size=20;
@@ -34,7 +34,7 @@ module 2020_extrusion_profile(slot = "t", left_open = false, right_open = false,
 }
 
 // Creates a 2D 2040 Extrusion Profile
-module 2040_extrusion_profile(slot = "t") { 
+module extrusion_profile_2040(slot = "t") { 
    difference() {
        outer_rectangle_with_fillet(0.5, 40, 20);
            
@@ -42,15 +42,15 @@ module 2040_extrusion_profile(slot = "t") {
        translate([0, 0 , 0]) 2020_rectangle_cut();   
     
         // Left
-       translate([-10,0,0]) 2020_extrusion_profile(slot, outer_square_base = false);
+       translate([-10,0,0]) extrusion_profile_2020(slot, outer_square_base = false);
        
        // right
-       translate([10,0,0]) 2020_extrusion_profile(slot, outer_square_base = false);  
+       translate([10,0,0]) extrusion_profile_2020(slot, outer_square_base = false);  
    }
 }
 
 // Creates a 2D 2060 Extrusion Profile
-module 2060_extrusion_profile(slot = "t") {
+module extrusion_profile_2060(slot = "t") {
    difference() {
        outer_rectangle_with_fillet(0.5, 60, 20);
            
@@ -58,16 +58,16 @@ module 2060_extrusion_profile(slot = "t") {
        translate([-10, 0 , 0]) 2020_rectangle_cut();
        translate([10, 0 , 0]) 2020_rectangle_cut(); 
         // Left
-       translate([-20,0,0]) 2020_extrusion_profile(slot, outer_square_base = false);
+       translate([-20,0,0]) extrusion_profile_2020(slot, outer_square_base = false);
        // middle
-       translate([0,0,0]) 2020_extrusion_profile(slot, outer_square_base = false);
+       translate([0,0,0]) extrusion_profile_2020(slot, outer_square_base = false);
        // right
-       translate([20,0,0]) 2020_extrusion_profile(slot, outer_square_base = false); 
+       translate([20,0,0]) extrusion_profile_2020(slot, outer_square_base = false); 
    }
 }
 
 // Creates a 2D 2080 Extrusion Profile
-module 2080_extrusion_profile(slot = "t") { 
+module extrusion_profile_2080(slot = "t") { 
    difference() {
        outer_rectangle_with_fillet(0.5, 80, 20);
            
@@ -77,11 +77,11 @@ module 2080_extrusion_profile(slot = "t") {
        translate([20, 0 , 0]) 2020_rectangle_cut();
     
         // Left
-       translate([-30,0,0]) 2020_extrusion_profile(slot, outer_square_base = false);
-       translate([-10,0,0]) 2020_extrusion_profile(slot, outer_square_base = false);
+       translate([-30,0,0]) extrusion_profile_2020(slot, outer_square_base = false);
+       translate([-10,0,0]) extrusion_profile_2020(slot, outer_square_base = false);
        // right
-       translate([10,0,0]) 2020_extrusion_profile(slot, outer_square_base = false);
-       translate([30,0,0]) 2020_extrusion_profile(slot, outer_square_base = false);  
+       translate([10,0,0]) extrusion_profile_2020(slot, outer_square_base = false);
+       translate([30,0,0]) extrusion_profile_2020(slot, outer_square_base = false);  
    }
 }
 
@@ -114,7 +114,7 @@ module 3030_rectangle_cut() {
 }
 
 // Creates a 2D 4080 Extrusion Profile
-module 4080_extrusion_profile(slot = "t") {
+module extrusion_profile_4080(slot = "t") {
    difference() {
      union() {
        outer_rectangle_with_fillet(0.5, 80, 20);
@@ -130,23 +130,23 @@ module 4080_extrusion_profile(slot = "t") {
      translate([-30, 10, 0]) rotate([0,0,90]) 2020_between_cut();
      
      // Upper Left
-     translate([-30, 20, 0]) 2020_extrusion_profile(slot, outer_square_base = false);
+     translate([-30, 20, 0]) extrusion_profile_2020(slot, outer_square_base = false);
      // Lower - from Left to Right
-     translate([-30, 0, 0]) 2020_extrusion_profile(slot, outer_square_base = false);
-     translate([-10, 0, 0]) 2020_extrusion_profile(slot, outer_square_base = false);
-     translate([10, 0, 0]) 2020_extrusion_profile(slot, outer_square_base = false);
-     translate([30, 0, 0]) 2020_extrusion_profile(slot, outer_square_base = false);
+     translate([-30, 0, 0]) extrusion_profile_2020(slot, outer_square_base = false);
+     translate([-10, 0, 0]) extrusion_profile_2020(slot, outer_square_base = false);
+     translate([10, 0, 0]) extrusion_profile_2020(slot, outer_square_base = false);
+     translate([30, 0, 0]) extrusion_profile_2020(slot, outer_square_base = false);
      // Upper Right
-     translate([30, 20, 0]) 2020_extrusion_profile(slot, outer_square_base = false);
+     translate([30, 20, 0]) extrusion_profile_2020(slot, outer_square_base = false);
    }
 }
 
 // Creates a 2D 4040 Extrusion Profile
-module 4040_extrusion_profile(slot = "t") {
+module extrusion_profile_4040(slot = "t") {
    difference() {
        
      outer_square_with_fillet(0.5, 40);
-     4040_extrusion_profile_square(slot, outer_square_base = false);
+     extrusion_profile_4040_square(slot, outer_square_base = false);
        
      // Cut diamond in middle
      translate([0, 0,0]) rotate([0,0,45]) square(19, center = true);
@@ -158,20 +158,20 @@ module 4040_extrusion_profile(slot = "t") {
    }    
 }
 
-// Used by the 4040_extrusion_profile module in order to combine 2020 extrusions
-module 4040_extrusion_profile_square(slot, outer_square_base) {
+// Used by the extrusion_profile_4040 module in order to combine 2020 extrusions
+module extrusion_profile_4040_square(slot, outer_square_base) {
    // Upper Left
-   translate([-10,10,0]) 2020_extrusion_profile(slot,outer_square_base = outer_square_base);
+   translate([-10,10,0]) extrusion_profile_2020(slot,outer_square_base = outer_square_base);
    // Upper Right
-   translate([10,10,0]) 2020_extrusion_profile(slot,outer_square_base = outer_square_base);
+   translate([10,10,0]) extrusion_profile_2020(slot,outer_square_base = outer_square_base);
    // Lower right
-   translate([-10,-10,0]) 2020_extrusion_profile(slot, outer_square_base = outer_square_base); 
+   translate([-10,-10,0]) extrusion_profile_2020(slot, outer_square_base = outer_square_base); 
    // Lower Left
-   translate([10,-10,0]) 2020_extrusion_profile(slot,outer_square_base = outer_square_base); 
+   translate([10,-10,0]) extrusion_profile_2020(slot,outer_square_base = outer_square_base); 
 }
 
 // Creates a 2D 3030 Extrusion Profile
-module 3030_extrusion_profile(slot = "t", left_open = false, right_open = false, upper_open = false, lower_open = false, outer_square_base = true) {
+module extrusion_profile_3030(slot = "t", left_open = false, right_open = false, upper_open = false, lower_open = false, outer_square_base = true) {
         
         fillet=.8;
         square_size=30;
@@ -185,7 +185,7 @@ module 3030_extrusion_profile(slot = "t", left_open = false, right_open = false,
 }
 
 // Creates a 2D 3060 Extrusion Profile
-module 3060_extrusion_profile(slot = "t") {
+module extrusion_profile_3060(slot = "t") {
    difference() {
        outer_rectangle_with_fillet(0.5, 60, 30);
 
@@ -193,10 +193,10 @@ module 3060_extrusion_profile(slot = "t") {
        translate([0, 0 , 0]) 3030_rectangle_cut();
 
         // Left
-       translate([-15,0,0]) 3030_extrusion_profile(slot, outer_square_base = false);
+       translate([-15,0,0]) extrusion_profile_3030(slot, outer_square_base = false);
 
        // right
-       translate([15,0,0]) 3030_extrusion_profile(slot, outer_square_base = false);
+       translate([15,0,0]) extrusion_profile_3030(slot, outer_square_base = false);
    }
 }
 
